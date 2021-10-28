@@ -2,6 +2,8 @@ import unittest
 from pagerank_iterativ2 import Page, calc_pr
 import pagerank_iterativ2
 
+# Results: https://github.com/pintman/analyse_wiki_db/actions
+
 class PageTest(unittest.TestCase):
     def setUp(self):
         self.page = Page('test')
