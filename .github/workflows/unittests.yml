@@ -25,4 +25,4 @@ jobs:
     - name: UnitTests
       run: |
         python --version
-        python -m unittest *tests.py
+        python -m unittest pagerank_iterativ2_tests.py
