@@ -14,7 +14,7 @@ class PagerankTest(unittest.TestCase):
         self.demo1 = pagerank_iterativ2.demo1()
 
     def test_calc(self):
-        pagerank_iterativ2.calc_pr(self.demo1, 0.1, 80)
+        pagerank_iterativ2.calc_pr(self.demo1, 0.85, 80)
         for p in self.demo1:
             if p.name == 'a': self.assertTrue(0.14 < p.pr < 0.16)
             elif p.name == 'b': assert 0.213 < p.pr < 0.215
