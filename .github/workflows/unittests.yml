@@ -23,4 +23,5 @@ jobs:
         pip install pylint
     - name: UnitTests
       run: |
-        python3 -m unittest *tests.py
+        python --version
+        python -m unittest *tests.py
