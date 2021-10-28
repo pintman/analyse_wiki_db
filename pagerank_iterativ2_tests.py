@@ -52,7 +52,7 @@ class PagerankTest(unittest.TestCase):
             if p.name == 'a': self.assertTrue(0.14 < p.pr < 0.16)
             elif p.name == 'b': self.assertTrue(0.213 < p.pr < 0.215)
             elif p.name == 'c': self.assertTrue(0.394 < p.pr < 0.396)
-            else: assert False
+            else: self.assertFalse()
 
     def test_calc_demo2(self):
         calc_pr(self.demo2, 0.5, 80)
@@ -60,4 +60,4 @@ class PagerankTest(unittest.TestCase):
             if p.name == 'a': self.assertTrue(1.07692 < p.pr < 1.07693)
             elif p.name == 'b': self.assertTrue(0.7692 < p.pr < 0.7693)
             elif p.name == 'c': self.assertTrue(1.153 < p.pr < 1.154)
-            else: assert False
+            else: self.assertFalse()
