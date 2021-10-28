@@ -16,8 +16,35 @@ class PageTest(unittest.TestCase):
 
 class PagerankTest(unittest.TestCase):
     def setUp(self):
-        self.demo1 = pagerank_iterativ2.demo1()
-        self.demo2 = pagerank_iterativ2.demo2()
+        '''
+        c <- a -> b
+        ^--------/
+        '''
+        a = Page('a')
+        b = Page('b')
+        c = Page('c')
+
+        a.outgoing_links = [b, c]
+        b.outgoing_links = [c]
+        b.incoming_links = [a]
+        c.incoming_links = [a, b]
+        self.demo1 = [a, b, c]
+
+        '''
+        b <- a <-> c
+        \---------^
+        '''
+        a = Page('a')
+        b = Page('b')
+        c = Page('c')
+
+        a.outgoing_links = [b, c]
+        a.incoming_links = [c]
+        b.outgoing_links = [c]
+        b.incoming_links = [a]
+        c.outgoing_links = [a]
+        c.incoming_links = [a, b]
+        self.demo2 = [a, b, c]       
 
     def test_calc_demo1(self):
         calc_pr(self.demo1, 0.85, 80)

@@ -54,59 +54,6 @@ def calc_pr(pages: list, d: float, iterations: int, debug=False):
                 print(p.name, p.pr, end='  ')
             print()
 
-
-def demo1():
-    '''
-    c <- a -> b
-    ^--------/
-    '''
-    a = Page('a')
-    b = Page('b')
-    c = Page('c')
-
-    a.outgoing_links = [b, c]
-    b.outgoing_links = [c]
-    b.incoming_links = [a]
-    c.incoming_links = [a, b]
-    return [a, b, c]
-
-def test_demo1():
-    pages = demo1()
-
-    calc_pr(pages, 0.85, 80)
-    for p in pages:
-        if p.name == 'a': assert 0.14 < p.pr < 0.16
-        elif p.name == 'b': assert 0.213 < p.pr < 0.215
-        elif p.name == 'c': assert 0.394 < p.pr < 0.396
-        else: assert False
-
-def demo2():
-    '''
-    b <- a <-> c
-     \---------^
-    '''
-    a = Page('a')
-    b = Page('b')
-    c = Page('c')
-
-    a.outgoing_links = [b, c]
-    a.incoming_links = [c]
-    b.outgoing_links = [c]
-    b.incoming_links = [a]
-    c.outgoing_links = [a]
-    c.incoming_links = [a, b]
-    return [a, b, c]
-
-def test_demo2():
-    pages = demo2()
-
-    calc_pr(pages, 0.5, 80)
-    for p in pages:
-        if p.name == 'a': assert 1.07692 < p.pr < 1.07693
-        elif p.name == 'b': assert 0.7692 < p.pr < 0.7693
-        elif p.name == 'c': assert 1.153 < p.pr < 1.154
-        else: assert False
-
 def wikipages(user:str, password:str, database:str, pagetable:str, pagelinkstable:str):
     if 'sqlite' in database:
         import sqlite3
