@@ -1,5 +1,5 @@
 import unittest
-from pagerank_iterativ2 import Page, calc_pr
+from pagerank_iterativ2 import Page, calc_pr, wikipages
 import pagerank_iterativ2
 
 # Results: https://github.com/pintman/analyse_wiki_db/actions
@@ -61,3 +61,18 @@ class PagerankTest(unittest.TestCase):
             elif p.name == 'b': self.assertTrue(0.7692 < p.pr < 0.7693)
             elif p.name == 'c': self.assertTrue(1.153 < p.pr < 1.154)
             else: self.assertFalse()
+
+    def test_wiki_pages(self):
+        ps = wikipages("", "", "wiki_ITF19a.sqlite", "page", "pagelinks")
+        self.assertEqual(len(ps), 39)
+        calc_pr(ps, d=0.85, iterations=20, debug=False)
+        ps.sort(reverse=True)
+        top5 = [('Mause', 3.806), ('Maus', 3.385), ('Bildschirm', 3.381), ('Hardware', 1.186), ('Software', 1.1)]
+        for soll, ist in zip(top5, ps[:5]):
+            self.assertEqual(soll[0], ist.name)
+            self.assertEqual(round(soll[1], 2), round(ist.pr, 2))
+            
+        bottom3 =  [('Schreiber', 0.15), ('Localhost', 0.15), ('Flowchart.png', 0.15)]
+        for soll, ist in zip(bottom3, ps[-3:]):
+            self.assertEqual(soll[0], ist.name)
+            self.assertEqual(soll[1], 0.15)
