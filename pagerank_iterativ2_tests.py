@@ -8,7 +8,7 @@ class PageTest(unittest.TestCase):
     def setUp(self):
         self.page = Page('test')
 
-    def test_incoming_links(self):
+    def test_links(self):
         self.assertEqual(len(self.page.incoming_links), 0)
         self.assertEqual(len(self.page.outgoing_links), 0)
         self.assertEqual(self.page.number_outgoing_links(), 0)
