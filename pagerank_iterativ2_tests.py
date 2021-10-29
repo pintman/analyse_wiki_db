@@ -72,7 +72,7 @@ class PagerankTest(unittest.TestCase):
             self.assertEqual(soll[0], ist.name)
             self.assertEqual(round(soll[1], 2), round(ist.pr, 2))
             
-        bottom3 =  [('Schreiber', 0.15), ('Localhost', 0.15), ('Flowchart.png', 0.15)]
+        bottom3 = [('Schreiber', 0.15), ('Localhost', 0.15), ('Flowchart.png', 0.15)]
         for soll, ist in zip(bottom3, ps[-3:]):
             self.assertEqual(soll[0], ist.name)
-            self.assertEqual(soll[1], 0.15)
+            self.assertEqual(soll[1], round(ist.pr, 2))
