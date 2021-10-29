@@ -26,4 +26,4 @@ jobs:
       run: |
         python --version
         python -c 'import os; print(os.name)'
-        python -m unittest pagerank_iterativ2_tests.py
+        python -m unittest -v pagerank_iterativ2_tests.py
