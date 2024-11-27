@@ -1,6 +1,5 @@
 import unittest
 from pagerank_iterativ2 import Page, calc_pr, wikipages
-import pagerank_iterativ2
 
 # Results: https://github.com/pintman/analyse_wiki_db/actions
 
